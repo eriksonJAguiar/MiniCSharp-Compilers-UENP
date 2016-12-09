@@ -38,11 +38,11 @@
 
 ### Gramática
 
-<MC#> -- main{<CODIGO>}
+<MC#> -- MAIN{<CODIGO>}
 <CODIGO> -- <CMD> | <CMD> EOL <CODIGO>
 <CMD> -- <LER> | <ESCREVER> | <INTEIRO> | <PTFLUT> | <DPTFLUT> | <CHAR> | <STRING> | <BOOL> | <OP> | <OPL> | <CF> 
-<LER> -- Console.Read(<NUM>) | Console.Read(<TEXTO>) | Console.Read(<VAR>)
-<ESCREVER> -- Console.Write(<NUM>) | Console.Write(<TEXTO>) | Console.Write(<VAR>)
+<LER> -- READ(<NUM>) | READ(<TEXTO>) | READ(<VAR>)
+<ESCREVER> -- WRITE(<NUM>) | WRITE(<TEXTO>) | WRITE(<VAR>)
 <INTEIRO> -- INT <VAR>
 <PTFLUT> -- FLOAT <VAR>
 <DPTFLUT> -- DOUBLE <VAR>
@@ -60,7 +60,36 @@
 
 **Token** | **Padrão** | **Atributo**
 ----------|------------|-------------
-val       |val         |val
+  MAIN    |val         |val
+  EOL     |
+  READ    |   read
+  WRITE   |   write
+  INT     |   int
+  FLOAT   |   float
+  DOUBLE  |   double
+  CHAR    |   char
+  STRING  |   string
+  BOOL    |   bool
+   +      |   ([+])
+   -      |   ([-])
+   /      |   ([/])
+   *      |   ([*])
+   %      |   ([%])
+   E      |   [&&]+
+   OU     |   [||]+
+   IF     |    if
+   TEXTO  |   [" "]
+   NUM    |   [0-9]+
+   ,      |     ,
+   (      |     (
+   )      |     (
+  
+  
+  
+  
+Console.Read
+Console.Write
+
 
 
 ### Análise Lexica + Sintática

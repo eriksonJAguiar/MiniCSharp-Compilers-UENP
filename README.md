@@ -38,6 +38,23 @@
 
 ### Gramática
 
+<MC#> -- main{<CODIGO>}
+<CODIGO> -- <CMD> | <CMD> EOL <CODIGO>
+<CMD> -- <LER> | <ESCREVER> | <INTEIRO> | <PTFLUT> | <DPTFLUT> | <CHAR> | <STRING> | <BOOL> | <OP> | <OPL> | <CF> 
+<LER> -- Console.Read(<CHAR>) | Console.Read(<STRING>) | Console.Read(<VAR>)
+<ESCREVER> -- Console.Write(<CHAR>) | Console.Write(<STRING>) | Console.Write(<VAR>)
+<INTEIRO> -- int <VAR>
+<PTFLUT> -- float <VAR>
+<DPTFLUT> -- double <VAR>
+<CHAR> -- CHAR <VAR>
+<STRING> -- 
+<BOOL> --
+<OP> --
+<OPL> --
+<CF> --
+<TEXTO> --
+<NUM> -- 
+
 
 ### Tabela de Tokens
 

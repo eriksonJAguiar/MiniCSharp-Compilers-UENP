@@ -50,7 +50,7 @@
 <STRING> -- STRING <VAR>
 <BOOL> -- BOOL <VAR>
 <OP> -- <VAR> + <VAR> | <VAR> - <VAR> | <VAR> / <VAR> | <VAR> * <VAR> | <VAR> % <VAR>
-<OPL> -- <VAR> && <VAR> | <VAR> || <VAR> 
+<OPL> -- <VAR> E <VAR> | <VAR> OU <VAR> 
 <CF> -- IF(<OPL>){<CODIGO>} | IF(<OPL>){<CODIGO>}ELSE{<CODIGO>}
 <TEXTO> -- TEXTO
 <NUM> -- NUM | NUM,NUM

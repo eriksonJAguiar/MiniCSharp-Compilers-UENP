@@ -41,19 +41,19 @@
 <MC#> -- main{<CODIGO>}
 <CODIGO> -- <CMD> | <CMD> EOL <CODIGO>
 <CMD> -- <LER> | <ESCREVER> | <INTEIRO> | <PTFLUT> | <DPTFLUT> | <CHAR> | <STRING> | <BOOL> | <OP> | <OPL> | <CF> 
-<LER> -- Console.Read(<CHAR>) | Console.Read(<STRING>) | Console.Read(<VAR>)
-<ESCREVER> -- Console.Write(<CHAR>) | Console.Write(<STRING>) | Console.Write(<VAR>)
-<INTEIRO> -- int <VAR>
-<PTFLUT> -- float <VAR>
-<DPTFLUT> -- double <VAR>
+<LER> -- Console.Read(<NUM>) | Console.Read(<TEXTO>) | Console.Read(<VAR>)
+<ESCREVER> -- Console.Write(<NUM>) | Console.Write(<TEXTO>) | Console.Write(<VAR>)
+<INTEIRO> -- INT <VAR>
+<PTFLUT> -- FLOAT <VAR>
+<DPTFLUT> -- DOUBLE <VAR>
 <CHAR> -- CHAR <VAR>
-<STRING> -- 
-<BOOL> --
-<OP> --
-<OPL> --
-<CF> --
-<TEXTO> --
-<NUM> -- 
+<STRING> -- STRING <VAR>
+<BOOL> -- BOOL <VAR>
+<OP> -- <VAR> + <VAR> | <VAR> - <VAR> | <VAR> / <VAR> | <VAR> * <VAR> | <VAR> % <VAR>
+<OPL> -- <VAR> && <VAR> | <VAR> || <VAR> 
+<CF> -- IF(<OPL>){<CODIGO>} | IF(<OPL>){<CODIGO>}ELSE{<CODIGO>}
+<TEXTO> -- TEXTO
+<NUM> -- NUM | NUM,NUM
 
 
 ### Tabela de Tokens

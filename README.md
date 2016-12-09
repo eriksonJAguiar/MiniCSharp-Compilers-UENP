@@ -6,8 +6,8 @@
 
 #### Colaboradores
 
-* ###### Erikson Júlio de Aguiar;
-* ###### Eduardo Pacheco Beraldo.
+* **Erikson Júlio de Aguiar**;
+* **Eduardo Pacheco Beraldo**.
 
 ## Especificação da Gramática
 

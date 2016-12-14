@@ -49,11 +49,11 @@
 <CHAR> -- CHAR <VAR>
 <STRING> -- STRING <VAR>
 <BOOL> -- BOOL <VAR>
-<OP> -- <VAR> + <VAR> | <VAR> - <VAR> | <VAR> / <VAR> | <VAR> * <VAR> | <VAR> % <VAR>
+<OP> -- <VAR> <SOMA> <VAR> | <VAR> <SUB> <VAR> | <VAR> <DIV> <VAR> | <VAR> <MULT> <VAR> | <VAR> <REST> <VAR>
 <OPL> -- <VAR> E <VAR> | <VAR> OU <VAR> 
 <CF> -- IF(<OPL>){<CODIGO>} | IF(<OPL>){<CODIGO>}ELSE{<CODIGO>}
 <TEXTO> -- TEXTO
-<NUM> -- NUM | NUM,NUM
+<NUM> -- NUM | NUM SEP NUM
 
 
 ### Tabela de Tokens
@@ -70,20 +70,17 @@
   CHAR    |   char     |
   STRING  |   string   |
   BOOL    |   bool     |
-   +      |   ([+])    |
-   -      |   ([-])    |
-   /      |   ([/])    |
-   *      |   ([*])    |
-   %      |   ([%])    |
-   E      |   [&&]+    |
-   OU     |   [||]+    |
-   IF     |    if      |
-   TEXTO  |   [" "]    |
-   NUM    |   [0-9]+   |
-   ,      |     ,      |
-   (      |     (      |
-   )      |     (      |
-  
+  SOMA    |   ([+])    |
+  SUB     |   ([-])    |
+  DIV     |   ([/])    |
+  MULT    |   ([*])    |
+  REST    |   ([%])    |
+  E       |   [&&]     |
+  OU      |   [||]     |
+  IF      |    if      |
+  TEXTO   |   [" "]    |
+  NUM     |   [0-9]+   |
+  ,       |     ,      |
   
   
   

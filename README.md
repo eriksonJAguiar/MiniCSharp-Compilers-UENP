@@ -61,28 +61,28 @@
 **Token** | **Padrão** | **Atributo**
 ----------|------------|-------------
   MAIN    |val         |val
-  EOL     |
-  READ    |   read
-  WRITE   |   write
-  INT     |   int
-  FLOAT   |   float
-  DOUBLE  |   double
-  CHAR    |   char
-  STRING  |   string
-  BOOL    |   bool
-   +      |   ([+])
-   -      |   ([-])
-   /      |   ([/])
-   *      |   ([*])
-   %      |   ([%])
-   E      |   [&&]+
-   OU     |   [||]+
-   IF     |    if
-   TEXTO  |   [" "]
-   NUM    |   [0-9]+
-   ,      |     ,
-   (      |     (
-   )      |     (
+  EOL     |   /n /t    |
+  READ    |   read     |
+  WRITE   |   write    |
+  INT     |   int      |
+  FLOAT   |   float    |
+  DOUBLE  |   double   |
+  CHAR    |   char     |
+  STRING  |   string   |
+  BOOL    |   bool     |
+   +      |   ([+])    |
+   -      |   ([-])    |
+   /      |   ([/])    |
+   *      |   ([*])    |
+   %      |   ([%])    |
+   E      |   [&&]+    |
+   OU     |   [||]+    |
+   IF     |    if      |
+   TEXTO  |   [" "]    |
+   NUM    |   [0-9]+   |
+   ,      |     ,      |
+   (      |     (      |
+   )      |     (      |
   
   
   

@@ -1,0 +1,7 @@
+Main{
+int x;
+double x;
+if(x >= 10){
+x = 15;
+};
+}

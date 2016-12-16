@@ -42,19 +42,6 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterChar(@NotNull miniCsharpParser.CharContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitChar(@NotNull miniCsharpParser.CharContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterOpl(@NotNull miniCsharpParser.OplContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -75,6 +62,19 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitLer(@NotNull miniCsharpParser.LerContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterCmp(@NotNull miniCsharpParser.CmpContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitCmp(@NotNull miniCsharpParser.CmpContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -146,6 +146,19 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterAtr(@NotNull miniCsharpParser.AtrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitAtr(@NotNull miniCsharpParser.AtrContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterString(@NotNull miniCsharpParser.StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -153,6 +166,19 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitString(@NotNull miniCsharpParser.StringContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterDeclaracao(@NotNull miniCsharpParser.DeclaracaoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitDeclaracao(@NotNull miniCsharpParser.DeclaracaoContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -2,20 +2,20 @@ grammar miniCsharp;
 
 mcSHARP : MAIN'{'codigo'}';
          
-codigo  : cmd
-        | cmd EOL codigo;
+codigo  : cmd';'
+        | cmd';' EOL codigo;
 
 cmd     : ler
         | escrever
         | declaracao
         | op
         | opl
-        | cf;
+        | cf
+        | atr;
 
 declaracao : | inteiro
              | ptflut
              | dptflut
-             | char
              | string
              | bool;
            
@@ -33,25 +33,44 @@ ptflut :FLOAT VAR;
 
 dptflut:DOUBLE VAR;
 
-char   :CHAR VAR;
-
 string :STRING VAR;
 
 bool   :BOOL VAR;
 
-op     :VAR '+' VAR
-       |VAR '-' VAR
-       |VAR '/' VAR
-       |VAR '*' VAR
-       |VAR '%' VAR
-       |NUM '+' NUM
-       |NUM '-' NUM
-       |NUM '/' NUM
-       |NUM '*' NUM
-       |NUM '%' NUM;
+op     :VAR '=' VAR '+' VAR
+       |VAR '=' VAR '-' VAR
+       |VAR '=' VAR '/' VAR
+       |VAR '=' VAR '*' VAR
+       |VAR '=' VAR '%' VAR
+       |VAR '=' NUM '+' NUM
+       |VAR '=' NUM '-' NUM
+       |VAR '=' NUM '/' NUM
+       |VAR '=' NUM '*' NUM
+       |VAR '=' NUM '%' NUM;
+       
+atr   :VAR'++'
+      |VAR'--';
 
-opl    :VAR '&&' VAR opl
-       |VAR '||' VAR;
+opl    :VAR '&&' opl
+       |VAR '||' opl
+       |cmp
+       |cmp opl;
+
+cmp    :VAR '==' cmp 
+       |VAR '!=' cmp
+       |VAR '>' cmp
+       |VAR '<' cmp
+       |VAR '<=' cmp
+       |VAR '>=' cmp
+       |NUM '==' cmp
+       |NUM '!=' cmp
+       |NUM '>' cmp
+       |NUM '<' cmp
+       |NUM '<=' cmp
+       |NUM '>=' cmp
+       |NUM
+       |VAR;
+
 
 cf     :IF(opl)'{'codigo'}'
        |IF(opl)'{'codigo'}'ELSE'{'codigo'}';
@@ -69,9 +88,10 @@ WHITE : 'white';
 INT   : 'int';
 FLOAT : 'float';
 DOUBLE: 'double';
-CHAR  : 'char';
 STRING: 'string';
 BOOL  : 'bool';
+NUM   : [0-9]+;
+VAR   : [_a-zA-Z]+;
 SOMA  : '+';
 SUB   : '-';
 DIV   : '/';
@@ -81,10 +101,20 @@ E     : '&&';
 OU    : '||';
 IF    : 'if';
 ELSE  : 'else';
-VAR   : [_a-zA-Z]+[_]?[a-zA-Z0-9]+;
-TEXTO : [/w/W]+;
-NUM   : [0-9]+;
-SEP   : ',';
-EOL   : [/n/t];
 CHA   : '{';
 CHF   : '}'; 
+PAA   : '(';
+PAF   : ')';
+EDL   : ';';
+EQL   : '=';
+EQLEQL: '==';
+DIF   : '!=';
+MAI   : '>';
+MEN   : '<';
+MENEQL: '<=';
+MAIEQL: '>=';
+ACR   : '++';
+DEC   : '--';
+TEXTO : [/w/W]+;
+SEP   : ',';
+EOL   : [\t\s\n]+;

@@ -1,29 +1,31 @@
 grammar miniCsharp;
 
-mcSHARP : MAIN{codigo};
+mcSHARP : MAIN'{'codigo'}';
          
 codigo  : cmd
         | cmd EOL codigo;
 
 cmd     : ler
         | escrever
-        | inteiro
-        | ptflut
-        | dptflut
-        | char
-        | string
-        | bool
+        | declaracao
         | op
         | opl
         | cf;
-           
-ler     :READ(num)
-        |READ(texto)
-        |READ(VAR);
 
-escrever:WHITE(num)
-        |WHITE(texto)
-        |WHITE(VAR);
+declaracao : | inteiro
+             | ptflut
+             | dptflut
+             | char
+             | string
+             | bool;
+           
+ler     : READ'('num')'
+        | READ'('texto')'
+        | READ'('VAR')';
+
+escrever: WHITE'('num')'
+        | WHITE'('texto')'
+        | WHITE'('VAR')';
 
 inteiro:INT VAR;
 
@@ -37,22 +39,27 @@ string :STRING VAR;
 
 bool   :BOOL VAR;
 
-op     :VAR SOMA VAR
-       |VAR SUB VAR
-       |VAR DIV VAR
-       |VAR MULT VAR
-       |VAR REST VAR;
+op     :VAR '+' VAR
+       |VAR '-' VAR
+       |VAR '/' VAR
+       |VAR '*' VAR
+       |VAR '%' VAR
+       |NUM '+' NUM
+       |NUM '-' NUM
+       |NUM '/' NUM
+       |NUM '*' NUM
+       |NUM '%' NUM;
 
-opl    :VAR E VAR
-       |VAR OU VAR;
+opl    :VAR '&&' VAR opl
+       |VAR '||' VAR;
 
-cf     :IF(opl){codigo}
-       |IF(opl){codigo}ELSE{codigo};
+cf     :IF(opl)'{'codigo'}'
+       |IF(opl)'{'codigo'}'ELSE'{'codigo'}';
 
 texto  :TEXTO;
 
 num    :NUM
-       |NUM SEP NUM;
+       |NUM ',' num;
 
 //TOKENS
 
@@ -60,22 +67,24 @@ MAIN  : 'Main';
 READ  : 'read';
 WHITE : 'white';
 INT   : 'int';
-FLOAT : 'FLOAT';
+FLOAT : 'float';
 DOUBLE: 'double';
 CHAR  : 'char';
 STRING: 'string';
 BOOL  : 'bool';
-SOMA  : [+];
-SUB   : [-];
-DIV   : [/];
-MULT  : [*];
-REST  : [%];
-E     : [&&];
-OU    : [||];
+SOMA  : '+';
+SUB   : '-';
+DIV   : '/';
+MULT  : '*';
+REST  : '%';
+E     : '&&';
+OU    : '||';
 IF    : 'if';
 ELSE  : 'else';
-VAR   : ([A-Z])+;
+VAR   : [_a-zA-Z]+[_]?[a-zA-Z0-9]+;
 TEXTO : [/w/W]+;
 NUM   : [0-9]+;
-SEP   : [,];
+SEP   : ',';
 EOL   : [/n/t];
+CHA   : '{';
+CHF   : '}'; 

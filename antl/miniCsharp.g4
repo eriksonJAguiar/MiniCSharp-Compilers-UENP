@@ -13,42 +13,41 @@ cmd     : ler
         | cf
         | atr;
 
-declaracao : | inteiro
-             | ptflut
-             | dptflut
-             | string
-             | bool;
+declaracao : INT VAR
+             | FLOAT VAR
+             | DOUBLE VAR
+             | STRING VAR
+             | BOOL VAR;
+
            
 ler     : READ'('num')'
         | READ'('texto')'
-        | READ'('VAR')';
+        | READ'('VAR')'
+        | READ'('texto','VAR')'
+        | READ'('texto','NUM')';
 
 escrever: WHITE'('num')'
         | WHITE'('texto')'
         | WHITE'('VAR')';
 
-inteiro:INT VAR;
 
-ptflut :FLOAT VAR;
-
-dptflut:DOUBLE VAR;
-
-string :STRING VAR;
-
-bool   :BOOL VAR;
-
-op     :VAR '=' VAR '+' VAR
-       |VAR '=' VAR '-' VAR
-       |VAR '=' VAR '/' VAR
-       |VAR '=' VAR '*' VAR
-       |VAR '=' VAR '%' VAR
-       |VAR '=' NUM '+' NUM
-       |VAR '=' NUM '-' NUM
-       |VAR '=' NUM '/' NUM
-       |VAR '=' NUM '*' NUM
-       |VAR '=' NUM '%' NUM;
+op      :VAR
+        |NUM
+        |VAR '+' op
+        |VAR '-' op
+        |VAR '/' op
+        |VAR '*' op
+        |VAR '%' op
+        |NUM '+' op
+        |NUM '-' op
+        |NUM '/' op
+        |NUM '*' op
+        |NUM '%' op;
+          
        
-atr   :VAR'++'
+atr   : VAR '=' op
+      | VAR '=' B
+      |VAR'++'
       |VAR'--';
 
 opl    :VAR '&&' opl
@@ -90,6 +89,7 @@ FLOAT : 'float';
 DOUBLE: 'double';
 STRING: 'string';
 BOOL  : 'bool';
+B     : ['true''false'];
 NUM   : [0-9]+([.]?[0-9]+|[0-9]*);
 VAR   : ([_]|[a-zA-Z])([a-zA-Z0-9]|[_])*;
 SOMA  : '+';
@@ -118,4 +118,4 @@ ACR   : '++';
 DEC   : '--';
 SEP   : ',';
 TEXTO : [/w/W]+;
-EOL   : [\t\s\n]+;
+EOL   : [\t\s\n]+ ->skip;

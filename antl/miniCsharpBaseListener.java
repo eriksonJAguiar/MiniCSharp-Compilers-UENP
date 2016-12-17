@@ -16,19 +16,6 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterTexto(@NotNull miniCsharpParser.TextoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitTexto(@NotNull miniCsharpParser.TextoContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterOp(@NotNull miniCsharpParser.OpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -42,13 +29,13 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterOpl(@NotNull miniCsharpParser.OplContext ctx) { }
+	@Override public void enterTexto(@NotNull miniCsharpParser.TextoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitOpl(@NotNull miniCsharpParser.OplContext ctx) { }
+	@Override public void exitTexto(@NotNull miniCsharpParser.TextoContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -68,6 +55,19 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterOpl(@NotNull miniCsharpParser.OplContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitOpl(@NotNull miniCsharpParser.OplContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterCmp(@NotNull miniCsharpParser.CmpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -75,19 +75,6 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitCmp(@NotNull miniCsharpParser.CmpContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterInteiro(@NotNull miniCsharpParser.InteiroContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitInteiro(@NotNull miniCsharpParser.InteiroContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -159,19 +146,6 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterString(@NotNull miniCsharpParser.StringContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitString(@NotNull miniCsharpParser.StringContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterDeclaracao(@NotNull miniCsharpParser.DeclaracaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -192,45 +166,6 @@ public class miniCsharpBaseListener implements miniCsharpListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitEscrever(@NotNull miniCsharpParser.EscreverContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterDptflut(@NotNull miniCsharpParser.DptflutContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitDptflut(@NotNull miniCsharpParser.DptflutContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterPtflut(@NotNull miniCsharpParser.PtflutContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitPtflut(@NotNull miniCsharpParser.PtflutContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterBool(@NotNull miniCsharpParser.BoolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitBool(@NotNull miniCsharpParser.BoolContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

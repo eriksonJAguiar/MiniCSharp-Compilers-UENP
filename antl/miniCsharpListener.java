@@ -8,17 +8,6 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface miniCsharpListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link miniCsharpParser#texto}.
-	 * @param ctx the parse tree
-	 */
-	void enterTexto(@NotNull miniCsharpParser.TextoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniCsharpParser#texto}.
-	 * @param ctx the parse tree
-	 */
-	void exitTexto(@NotNull miniCsharpParser.TextoContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link miniCsharpParser#op}.
 	 * @param ctx the parse tree
 	 */
@@ -30,15 +19,15 @@ public interface miniCsharpListener extends ParseTreeListener {
 	void exitOp(@NotNull miniCsharpParser.OpContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link miniCsharpParser#opl}.
+	 * Enter a parse tree produced by {@link miniCsharpParser#texto}.
 	 * @param ctx the parse tree
 	 */
-	void enterOpl(@NotNull miniCsharpParser.OplContext ctx);
+	void enterTexto(@NotNull miniCsharpParser.TextoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link miniCsharpParser#opl}.
+	 * Exit a parse tree produced by {@link miniCsharpParser#texto}.
 	 * @param ctx the parse tree
 	 */
-	void exitOpl(@NotNull miniCsharpParser.OplContext ctx);
+	void exitTexto(@NotNull miniCsharpParser.TextoContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link miniCsharpParser#ler}.
@@ -52,6 +41,17 @@ public interface miniCsharpListener extends ParseTreeListener {
 	void exitLer(@NotNull miniCsharpParser.LerContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link miniCsharpParser#opl}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpl(@NotNull miniCsharpParser.OplContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniCsharpParser#opl}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpl(@NotNull miniCsharpParser.OplContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link miniCsharpParser#cmp}.
 	 * @param ctx the parse tree
 	 */
@@ -61,17 +61,6 @@ public interface miniCsharpListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCmp(@NotNull miniCsharpParser.CmpContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link miniCsharpParser#inteiro}.
-	 * @param ctx the parse tree
-	 */
-	void enterInteiro(@NotNull miniCsharpParser.InteiroContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniCsharpParser#inteiro}.
-	 * @param ctx the parse tree
-	 */
-	void exitInteiro(@NotNull miniCsharpParser.InteiroContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link miniCsharpParser#codigo}.
@@ -129,17 +118,6 @@ public interface miniCsharpListener extends ParseTreeListener {
 	void exitAtr(@NotNull miniCsharpParser.AtrContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link miniCsharpParser#string}.
-	 * @param ctx the parse tree
-	 */
-	void enterString(@NotNull miniCsharpParser.StringContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniCsharpParser#string}.
-	 * @param ctx the parse tree
-	 */
-	void exitString(@NotNull miniCsharpParser.StringContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link miniCsharpParser#declaracao}.
 	 * @param ctx the parse tree
 	 */
@@ -160,39 +138,6 @@ public interface miniCsharpListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitEscrever(@NotNull miniCsharpParser.EscreverContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link miniCsharpParser#dptflut}.
-	 * @param ctx the parse tree
-	 */
-	void enterDptflut(@NotNull miniCsharpParser.DptflutContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniCsharpParser#dptflut}.
-	 * @param ctx the parse tree
-	 */
-	void exitDptflut(@NotNull miniCsharpParser.DptflutContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link miniCsharpParser#ptflut}.
-	 * @param ctx the parse tree
-	 */
-	void enterPtflut(@NotNull miniCsharpParser.PtflutContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniCsharpParser#ptflut}.
-	 * @param ctx the parse tree
-	 */
-	void exitPtflut(@NotNull miniCsharpParser.PtflutContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link miniCsharpParser#bool}.
-	 * @param ctx the parse tree
-	 */
-	void enterBool(@NotNull miniCsharpParser.BoolContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniCsharpParser#bool}.
-	 * @param ctx the parse tree
-	 */
-	void exitBool(@NotNull miniCsharpParser.BoolContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link miniCsharpParser#cf}.

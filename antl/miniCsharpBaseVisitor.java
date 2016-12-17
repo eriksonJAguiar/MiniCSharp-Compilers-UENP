@@ -17,14 +17,6 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitTexto(@NotNull miniCsharpParser.TextoContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
 	@Override public T visitOp(@NotNull miniCsharpParser.OpContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -33,7 +25,7 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitOpl(@NotNull miniCsharpParser.OplContext ctx) { return visitChildren(ctx); }
+	@Override public T visitTexto(@NotNull miniCsharpParser.TextoContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -49,7 +41,7 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitCmp(@NotNull miniCsharpParser.CmpContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOpl(@NotNull miniCsharpParser.OplContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -57,7 +49,7 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitInteiro(@NotNull miniCsharpParser.InteiroContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCmp(@NotNull miniCsharpParser.CmpContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -105,14 +97,6 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitString(@NotNull miniCsharpParser.StringContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
 	@Override public T visitDeclaracao(@NotNull miniCsharpParser.DeclaracaoContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -122,30 +106,6 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
 	@Override public T visitEscrever(@NotNull miniCsharpParser.EscreverContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitDptflut(@NotNull miniCsharpParser.DptflutContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitPtflut(@NotNull miniCsharpParser.PtflutContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitBool(@NotNull miniCsharpParser.BoolContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}

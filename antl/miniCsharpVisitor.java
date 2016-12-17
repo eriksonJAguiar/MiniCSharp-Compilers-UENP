@@ -11,13 +11,6 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface miniCsharpVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link miniCsharpParser#texto}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTexto(@NotNull miniCsharpParser.TextoContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link miniCsharpParser#op}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -25,11 +18,11 @@ public interface miniCsharpVisitor<T> extends ParseTreeVisitor<T> {
 	T visitOp(@NotNull miniCsharpParser.OpContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link miniCsharpParser#opl}.
+	 * Visit a parse tree produced by {@link miniCsharpParser#texto}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitOpl(@NotNull miniCsharpParser.OplContext ctx);
+	T visitTexto(@NotNull miniCsharpParser.TextoContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link miniCsharpParser#ler}.
@@ -39,18 +32,18 @@ public interface miniCsharpVisitor<T> extends ParseTreeVisitor<T> {
 	T visitLer(@NotNull miniCsharpParser.LerContext ctx);
 
 	/**
+	 * Visit a parse tree produced by {@link miniCsharpParser#opl}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOpl(@NotNull miniCsharpParser.OplContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link miniCsharpParser#cmp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitCmp(@NotNull miniCsharpParser.CmpContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link miniCsharpParser#inteiro}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitInteiro(@NotNull miniCsharpParser.InteiroContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link miniCsharpParser#codigo}.
@@ -88,13 +81,6 @@ public interface miniCsharpVisitor<T> extends ParseTreeVisitor<T> {
 	T visitAtr(@NotNull miniCsharpParser.AtrContext ctx);
 
 	/**
-	 * Visit a parse tree produced by {@link miniCsharpParser#string}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitString(@NotNull miniCsharpParser.StringContext ctx);
-
-	/**
 	 * Visit a parse tree produced by {@link miniCsharpParser#declaracao}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -107,27 +93,6 @@ public interface miniCsharpVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitEscrever(@NotNull miniCsharpParser.EscreverContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link miniCsharpParser#dptflut}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDptflut(@NotNull miniCsharpParser.DptflutContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link miniCsharpParser#ptflut}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPtflut(@NotNull miniCsharpParser.PtflutContext ctx);
-
-	/**
-	 * Visit a parse tree produced by {@link miniCsharpParser#bool}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBool(@NotNull miniCsharpParser.BoolContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link miniCsharpParser#cf}.

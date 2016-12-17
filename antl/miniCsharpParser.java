@@ -14,27 +14,25 @@ public class miniCsharpParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		MAIN=1, READ=2, WHITE=3, INT=4, FLOAT=5, DOUBLE=6, STRING=7, BOOL=8, NUM=9, 
-		VAR=10, SOMA=11, SUB=12, DIV=13, MULT=14, REST=15, E=16, OU=17, IF=18, 
-		ELSE=19, CHA=20, CHF=21, PAA=22, PAF=23, EDL=24, EQL=25, EQLEQL=26, DIF=27, 
-		MAI=28, MEN=29, MENEQL=30, MAIEQL=31, ACR=32, DEC=33, TEXTO=34, SEP=35, 
-		EOL=36;
+		MAIN=1, READ=2, WHITE=3, INT=4, FLOAT=5, DOUBLE=6, STRING=7, BOOL=8, B=9, 
+		NUM=10, VAR=11, SOMA=12, SUB=13, DIV=14, MULT=15, REST=16, E=17, OU=18, 
+		IF=19, ELSE=20, TRUE=21, CHA=22, CHF=23, PAA=24, PAF=25, EDL=26, EQL=27, 
+		EQLEQL=28, DIF=29, MAI=30, MEN=31, MENEQL=32, MAIEQL=33, NEG=34, ACR=35, 
+		DEC=36, SEP=37, TEXTO=38, WS=39;
 	public static final String[] tokenNames = {
 		"<INVALID>", "'Main'", "'read'", "'white'", "'int'", "'float'", "'double'", 
-		"'string'", "'bool'", "NUM", "VAR", "'+'", "'-'", "'/'", "'*'", "'%'", 
-		"'&&'", "'||'", "'if'", "'else'", "'{'", "'}'", "'('", "')'", "';'", "'='", 
-		"'=='", "'!='", "'>'", "'<'", "'<='", "'>='", "'++'", "'--'", "TEXTO", 
-		"','", "EOL"
+		"'string'", "'bool'", "B", "NUM", "VAR", "'+'", "'-'", "'/'", "'*'", "'%'", 
+		"'&&'", "'||'", "'if'", "'else'", "'true'", "'{'", "'}'", "'('", "')'", 
+		"';'", "'='", "'=='", "'!='", "'>'", "'<'", "'<='", "'>='", "'!'", "'++'", 
+		"'--'", "','", "TEXTO", "WS"
 	};
 	public static final int
 		RULE_mcSHARP = 0, RULE_codigo = 1, RULE_cmd = 2, RULE_declaracao = 3, 
-		RULE_ler = 4, RULE_escrever = 5, RULE_inteiro = 6, RULE_ptflut = 7, RULE_dptflut = 8, 
-		RULE_string = 9, RULE_bool = 10, RULE_op = 11, RULE_atr = 12, RULE_opl = 13, 
-		RULE_cmp = 14, RULE_cf = 15, RULE_texto = 16, RULE_num = 17;
+		RULE_ler = 4, RULE_escrever = 5, RULE_cf = 6, RULE_op = 7, RULE_atr = 8, 
+		RULE_opl = 9, RULE_cmp = 10, RULE_texto = 11, RULE_num = 12;
 	public static final String[] ruleNames = {
-		"mcSHARP", "codigo", "cmd", "declaracao", "ler", "escrever", "inteiro", 
-		"ptflut", "dptflut", "string", "bool", "op", "atr", "opl", "cmp", "cf", 
-		"texto", "num"
+		"mcSHARP", "codigo", "cmd", "declaracao", "ler", "escrever", "cf", "op", 
+		"atr", "opl", "cmp", "texto", "num"
 	};
 
 	@Override
@@ -83,10 +81,10 @@ public class miniCsharpParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(36); match(MAIN);
-			setState(37); match(CHA);
-			setState(38); codigo();
-			setState(39); match(CHF);
+			setState(26); match(MAIN);
+			setState(27); match(CHA);
+			setState(28); codigo();
+			setState(29); match(CHF);
 			}
 		}
 		catch (RecognitionException re) {
@@ -101,12 +99,14 @@ public class miniCsharpParser extends Parser {
 	}
 
 	public static class CodigoContext extends ParserRuleContext {
-		public TerminalNode EOL() { return getToken(miniCsharpParser.EOL, 0); }
+		public CmdContext cmd(int i) {
+			return getRuleContext(CmdContext.class,i);
+		}
 		public CodigoContext codigo() {
 			return getRuleContext(CodigoContext.class,0);
 		}
-		public CmdContext cmd() {
-			return getRuleContext(CmdContext.class,0);
+		public List<CmdContext> cmd() {
+			return getRuleContexts(CmdContext.class);
 		}
 		public CodigoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -131,23 +131,34 @@ public class miniCsharpParser extends Parser {
 		CodigoContext _localctx = new CodigoContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_codigo);
 		try {
-			setState(49);
+			setState(45);
 			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(41); cmd();
-				setState(42); match(EDL);
+				setState(31); cmd();
+				setState(32); match(EDL);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(44); cmd();
-				setState(45); match(EDL);
-				setState(46); match(EOL);
-				setState(47); codigo();
+				setState(34); cmd();
+				setState(35); match(EDL);
+				setState(36); cmd();
+				setState(37); match(EDL);
+				setState(38); codigo();
+				}
+				break;
+
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(40); cmd();
+				setState(41); match(EDL);
+				setState(42); cmd();
+				setState(43); match(EDL);
 				}
 				break;
 			}
@@ -208,54 +219,54 @@ public class miniCsharpParser extends Parser {
 		CmdContext _localctx = new CmdContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_cmd);
 		try {
-			setState(58);
+			setState(54);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(51); ler();
+				setState(47); ler();
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(52); escrever();
+				setState(48); escrever();
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(53); declaracao();
+				setState(49); declaracao();
 				}
 				break;
 
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(54); op();
+				setState(50); cf();
 				}
 				break;
 
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(55); opl();
+				setState(51); atr();
 				}
 				break;
 
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(56); cf();
+				setState(52); opl();
 				}
 				break;
 
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(57); atr();
+				setState(53); op();
 				}
 				break;
 			}
@@ -272,21 +283,12 @@ public class miniCsharpParser extends Parser {
 	}
 
 	public static class DeclaracaoContext extends ParserRuleContext {
-		public DptflutContext dptflut() {
-			return getRuleContext(DptflutContext.class,0);
-		}
-		public InteiroContext inteiro() {
-			return getRuleContext(InteiroContext.class,0);
-		}
-		public StringContext string() {
-			return getRuleContext(StringContext.class,0);
-		}
-		public BoolContext bool() {
-			return getRuleContext(BoolContext.class,0);
-		}
-		public PtflutContext ptflut() {
-			return getRuleContext(PtflutContext.class,0);
-		}
+		public TerminalNode BOOL() { return getToken(miniCsharpParser.BOOL, 0); }
+		public TerminalNode FLOAT() { return getToken(miniCsharpParser.FLOAT, 0); }
+		public TerminalNode INT() { return getToken(miniCsharpParser.INT, 0); }
+		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
+		public TerminalNode DOUBLE() { return getToken(miniCsharpParser.DOUBLE, 0); }
+		public TerminalNode STRING() { return getToken(miniCsharpParser.STRING, 0); }
 		public DeclaracaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -310,46 +312,90 @@ public class miniCsharpParser extends Parser {
 		DeclaracaoContext _localctx = new DeclaracaoContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_declaracao);
 		try {
-			setState(66);
+			setState(81);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
+				setState(56); match(INT);
+				setState(57); match(VAR);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(61); inteiro();
+				setState(58); match(FLOAT);
+				setState(59); match(VAR);
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(62); ptflut();
+				setState(60); match(DOUBLE);
+				setState(61); match(VAR);
 				}
 				break;
 
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(63); dptflut();
+				setState(62); match(STRING);
+				setState(63); match(VAR);
 				}
 				break;
 
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(64); string();
+				setState(64); match(BOOL);
+				setState(65); match(VAR);
 				}
 				break;
 
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(65); bool();
+				setState(66); match(INT);
+				setState(67); match(VAR);
+				setState(68); match(EQL);
+				}
+				break;
+
+			case 7:
+				enterOuterAlt(_localctx, 7);
+				{
+				setState(69); match(FLOAT);
+				setState(70); match(VAR);
+				setState(71); match(EQL);
+				}
+				break;
+
+			case 8:
+				enterOuterAlt(_localctx, 8);
+				{
+				setState(72); match(DOUBLE);
+				setState(73); match(VAR);
+				setState(74); match(EQL);
+				}
+				break;
+
+			case 9:
+				enterOuterAlt(_localctx, 9);
+				{
+				setState(75); match(STRING);
+				setState(76); match(VAR);
+				setState(77); match(EQL);
+				}
+				break;
+
+			case 10:
+				enterOuterAlt(_localctx, 10);
+				{
+				setState(78); match(BOOL);
+				setState(79); match(VAR);
+				setState(80); match(EQL);
 				}
 				break;
 			}
@@ -374,6 +420,7 @@ public class miniCsharpParser extends Parser {
 		public NumContext num() {
 			return getRuleContext(NumContext.class,0);
 		}
+		public TerminalNode NUM() { return getToken(miniCsharpParser.NUM, 0); }
 		public LerContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -397,35 +444,59 @@ public class miniCsharpParser extends Parser {
 		LerContext _localctx = new LerContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_ler);
 		try {
-			setState(82);
+			setState(111);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(68); match(READ);
-				setState(69); match(PAA);
-				setState(70); num();
-				setState(71); match(PAF);
+				setState(83); match(READ);
+				setState(84); match(PAA);
+				setState(85); num();
+				setState(86); match(PAF);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(73); match(READ);
-				setState(74); match(PAA);
-				setState(75); texto();
-				setState(76); match(PAF);
+				setState(88); match(READ);
+				setState(89); match(PAA);
+				setState(90); texto();
+				setState(91); match(PAF);
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(78); match(READ);
-				setState(79); match(PAA);
-				setState(80); match(VAR);
-				setState(81); match(PAF);
+				setState(93); match(READ);
+				setState(94); match(PAA);
+				setState(95); match(VAR);
+				setState(96); match(PAF);
+				}
+				break;
+
+			case 4:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(97); match(READ);
+				setState(98); match(PAA);
+				setState(99); texto();
+				setState(100); match(SEP);
+				setState(101); match(VAR);
+				setState(102); match(PAF);
+				}
+				break;
+
+			case 5:
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(104); match(READ);
+				setState(105); match(PAA);
+				setState(106); texto();
+				setState(107); match(SEP);
+				setState(108); match(NUM);
+				setState(109); match(PAF);
 				}
 				break;
 			}
@@ -473,704 +544,35 @@ public class miniCsharpParser extends Parser {
 		EscreverContext _localctx = new EscreverContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_escrever);
 		try {
-			setState(98);
+			setState(127);
 			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(84); match(WHITE);
-				setState(85); match(PAA);
-				setState(86); num();
-				setState(87); match(PAF);
+				setState(113); match(WHITE);
+				setState(114); match(PAA);
+				setState(115); num();
+				setState(116); match(PAF);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(89); match(WHITE);
-				setState(90); match(PAA);
-				setState(91); texto();
-				setState(92); match(PAF);
+				setState(118); match(WHITE);
+				setState(119); match(PAA);
+				setState(120); texto();
+				setState(121); match(PAF);
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(94); match(WHITE);
-				setState(95); match(PAA);
-				setState(96); match(VAR);
-				setState(97); match(PAF);
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class InteiroContext extends ParserRuleContext {
-		public TerminalNode INT() { return getToken(miniCsharpParser.INT, 0); }
-		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
-		public InteiroContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_inteiro; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterInteiro(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitInteiro(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitInteiro(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final InteiroContext inteiro() throws RecognitionException {
-		InteiroContext _localctx = new InteiroContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_inteiro);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(100); match(INT);
-			setState(101); match(VAR);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class PtflutContext extends ParserRuleContext {
-		public TerminalNode FLOAT() { return getToken(miniCsharpParser.FLOAT, 0); }
-		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
-		public PtflutContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_ptflut; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterPtflut(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitPtflut(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitPtflut(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final PtflutContext ptflut() throws RecognitionException {
-		PtflutContext _localctx = new PtflutContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_ptflut);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(103); match(FLOAT);
-			setState(104); match(VAR);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class DptflutContext extends ParserRuleContext {
-		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
-		public TerminalNode DOUBLE() { return getToken(miniCsharpParser.DOUBLE, 0); }
-		public DptflutContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_dptflut; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterDptflut(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitDptflut(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitDptflut(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final DptflutContext dptflut() throws RecognitionException {
-		DptflutContext _localctx = new DptflutContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_dptflut);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(106); match(DOUBLE);
-			setState(107); match(VAR);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class StringContext extends ParserRuleContext {
-		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
-		public TerminalNode STRING() { return getToken(miniCsharpParser.STRING, 0); }
-		public StringContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_string; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterString(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitString(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitString(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final StringContext string() throws RecognitionException {
-		StringContext _localctx = new StringContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_string);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(109); match(STRING);
-			setState(110); match(VAR);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class BoolContext extends ParserRuleContext {
-		public TerminalNode BOOL() { return getToken(miniCsharpParser.BOOL, 0); }
-		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
-		public BoolContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_bool; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterBool(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitBool(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitBool(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final BoolContext bool() throws RecognitionException {
-		BoolContext _localctx = new BoolContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_bool);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(112); match(BOOL);
-			setState(113); match(VAR);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class OpContext extends ParserRuleContext {
-		public TerminalNode VAR(int i) {
-			return getToken(miniCsharpParser.VAR, i);
-		}
-		public List<TerminalNode> VAR() { return getTokens(miniCsharpParser.VAR); }
-		public TerminalNode NUM(int i) {
-			return getToken(miniCsharpParser.NUM, i);
-		}
-		public List<TerminalNode> NUM() { return getTokens(miniCsharpParser.NUM); }
-		public OpContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_op; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterOp(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitOp(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitOp(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final OpContext op() throws RecognitionException {
-		OpContext _localctx = new OpContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_op);
-		try {
-			setState(165);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(115); match(VAR);
-				setState(116); match(EQL);
-				setState(117); match(VAR);
-				setState(118); match(SOMA);
-				setState(119); match(VAR);
-				}
-				break;
-
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(120); match(VAR);
-				setState(121); match(EQL);
-				setState(122); match(VAR);
-				setState(123); match(SUB);
-				setState(124); match(VAR);
-				}
-				break;
-
-			case 3:
-				enterOuterAlt(_localctx, 3);
-				{
+				setState(123); match(WHITE);
+				setState(124); match(PAA);
 				setState(125); match(VAR);
-				setState(126); match(EQL);
-				setState(127); match(VAR);
-				setState(128); match(DIV);
-				setState(129); match(VAR);
-				}
-				break;
-
-			case 4:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(130); match(VAR);
-				setState(131); match(EQL);
-				setState(132); match(VAR);
-				setState(133); match(MULT);
-				setState(134); match(VAR);
-				}
-				break;
-
-			case 5:
-				enterOuterAlt(_localctx, 5);
-				{
-				setState(135); match(VAR);
-				setState(136); match(EQL);
-				setState(137); match(VAR);
-				setState(138); match(REST);
-				setState(139); match(VAR);
-				}
-				break;
-
-			case 6:
-				enterOuterAlt(_localctx, 6);
-				{
-				setState(140); match(VAR);
-				setState(141); match(EQL);
-				setState(142); match(NUM);
-				setState(143); match(SOMA);
-				setState(144); match(NUM);
-				}
-				break;
-
-			case 7:
-				enterOuterAlt(_localctx, 7);
-				{
-				setState(145); match(VAR);
-				setState(146); match(EQL);
-				setState(147); match(NUM);
-				setState(148); match(SUB);
-				setState(149); match(NUM);
-				}
-				break;
-
-			case 8:
-				enterOuterAlt(_localctx, 8);
-				{
-				setState(150); match(VAR);
-				setState(151); match(EQL);
-				setState(152); match(NUM);
-				setState(153); match(DIV);
-				setState(154); match(NUM);
-				}
-				break;
-
-			case 9:
-				enterOuterAlt(_localctx, 9);
-				{
-				setState(155); match(VAR);
-				setState(156); match(EQL);
-				setState(157); match(NUM);
-				setState(158); match(MULT);
-				setState(159); match(NUM);
-				}
-				break;
-
-			case 10:
-				enterOuterAlt(_localctx, 10);
-				{
-				setState(160); match(VAR);
-				setState(161); match(EQL);
-				setState(162); match(NUM);
-				setState(163); match(REST);
-				setState(164); match(NUM);
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class AtrContext extends ParserRuleContext {
-		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
-		public AtrContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_atr; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterAtr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitAtr(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitAtr(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final AtrContext atr() throws RecognitionException {
-		AtrContext _localctx = new AtrContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_atr);
-		try {
-			setState(171);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(167); match(VAR);
-				setState(168); match(ACR);
-				}
-				break;
-
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(169); match(VAR);
-				setState(170); match(DEC);
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class OplContext extends ParserRuleContext {
-		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
-		public OplContext opl() {
-			return getRuleContext(OplContext.class,0);
-		}
-		public CmpContext cmp() {
-			return getRuleContext(CmpContext.class,0);
-		}
-		public OplContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_opl; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterOpl(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitOpl(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitOpl(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final OplContext opl() throws RecognitionException {
-		OplContext _localctx = new OplContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_opl);
-		try {
-			setState(183);
-			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(173); match(VAR);
-				setState(174); match(E);
-				setState(175); opl();
-				}
-				break;
-
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(176); match(VAR);
-				setState(177); match(OU);
-				setState(178); opl();
-				}
-				break;
-
-			case 3:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(179); cmp();
-				}
-				break;
-
-			case 4:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(180); cmp();
-				setState(181); opl();
-				}
-				break;
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class CmpContext extends ParserRuleContext {
-		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
-		public TerminalNode NUM() { return getToken(miniCsharpParser.NUM, 0); }
-		public CmpContext cmp() {
-			return getRuleContext(CmpContext.class,0);
-		}
-		public CmpContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_cmp; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterCmp(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitCmp(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitCmp(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final CmpContext cmp() throws RecognitionException {
-		CmpContext _localctx = new CmpContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_cmp);
-		try {
-			setState(223);
-			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(185); match(VAR);
-				setState(186); match(EQLEQL);
-				setState(187); cmp();
-				}
-				break;
-
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(188); match(VAR);
-				setState(189); match(DIF);
-				setState(190); cmp();
-				}
-				break;
-
-			case 3:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(191); match(VAR);
-				setState(192); match(MAI);
-				setState(193); cmp();
-				}
-				break;
-
-			case 4:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(194); match(VAR);
-				setState(195); match(MEN);
-				setState(196); cmp();
-				}
-				break;
-
-			case 5:
-				enterOuterAlt(_localctx, 5);
-				{
-				setState(197); match(VAR);
-				setState(198); match(MENEQL);
-				setState(199); cmp();
-				}
-				break;
-
-			case 6:
-				enterOuterAlt(_localctx, 6);
-				{
-				setState(200); match(VAR);
-				setState(201); match(MAIEQL);
-				setState(202); cmp();
-				}
-				break;
-
-			case 7:
-				enterOuterAlt(_localctx, 7);
-				{
-				setState(203); match(NUM);
-				setState(204); match(EQLEQL);
-				setState(205); cmp();
-				}
-				break;
-
-			case 8:
-				enterOuterAlt(_localctx, 8);
-				{
-				setState(206); match(NUM);
-				setState(207); match(DIF);
-				setState(208); cmp();
-				}
-				break;
-
-			case 9:
-				enterOuterAlt(_localctx, 9);
-				{
-				setState(209); match(NUM);
-				setState(210); match(MAI);
-				setState(211); cmp();
-				}
-				break;
-
-			case 10:
-				enterOuterAlt(_localctx, 10);
-				{
-				setState(212); match(NUM);
-				setState(213); match(MEN);
-				setState(214); cmp();
-				}
-				break;
-
-			case 11:
-				enterOuterAlt(_localctx, 11);
-				{
-				setState(215); match(NUM);
-				setState(216); match(MENEQL);
-				setState(217); cmp();
-				}
-				break;
-
-			case 12:
-				enterOuterAlt(_localctx, 12);
-				{
-				setState(218); match(NUM);
-				setState(219); match(MAIEQL);
-				setState(220); cmp();
-				}
-				break;
-
-			case 13:
-				enterOuterAlt(_localctx, 13);
-				{
-				setState(221); match(NUM);
-				}
-				break;
-
-			case 14:
-				enterOuterAlt(_localctx, 14);
-				{
-				setState(222); match(VAR);
+				setState(126); match(PAF);
 				}
 				break;
 			}
@@ -1219,37 +621,502 @@ public class miniCsharpParser extends Parser {
 
 	public final CfContext cf() throws RecognitionException {
 		CfContext _localctx = new CfContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_cf);
+		enterRule(_localctx, 12, RULE_cf);
 		try {
-			setState(241);
-			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			setState(145);
+			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(225); match(IF);
+				setState(129); match(IF);
 				{
-				setState(226); opl();
+				setState(130); opl();
 				}
-				setState(227); match(CHA);
-				setState(228); codigo();
-				setState(229); match(CHF);
+				setState(131); match(CHA);
+				setState(132); codigo();
+				setState(133); match(CHF);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(231); match(IF);
+				setState(135); match(IF);
 				{
-				setState(232); opl();
+				setState(136); opl();
 				}
-				setState(233); match(CHA);
-				setState(234); codigo();
-				setState(235); match(CHF);
-				setState(236); match(ELSE);
-				setState(237); match(CHA);
-				setState(238); codigo();
-				setState(239); match(CHF);
+				setState(137); match(CHA);
+				setState(138); codigo();
+				setState(139); match(CHF);
+				setState(140); match(ELSE);
+				setState(141); match(CHA);
+				setState(142); codigo();
+				setState(143); match(CHF);
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class OpContext extends ParserRuleContext {
+		public OpContext op() {
+			return getRuleContext(OpContext.class,0);
+		}
+		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
+		public TerminalNode NUM() { return getToken(miniCsharpParser.NUM, 0); }
+		public OpContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_op; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterOp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitOp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitOp(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final OpContext op() throws RecognitionException {
+		OpContext _localctx = new OpContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_op);
+		try {
+			setState(179);
+			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(147); match(VAR);
+				}
+				break;
+
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(148); match(NUM);
+				}
+				break;
+
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(149); match(VAR);
+				setState(150); match(SOMA);
+				setState(151); op();
+				}
+				break;
+
+			case 4:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(152); match(VAR);
+				setState(153); match(SUB);
+				setState(154); op();
+				}
+				break;
+
+			case 5:
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(155); match(VAR);
+				setState(156); match(DIV);
+				setState(157); op();
+				}
+				break;
+
+			case 6:
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(158); match(VAR);
+				setState(159); match(MULT);
+				setState(160); op();
+				}
+				break;
+
+			case 7:
+				enterOuterAlt(_localctx, 7);
+				{
+				setState(161); match(VAR);
+				setState(162); match(REST);
+				setState(163); op();
+				}
+				break;
+
+			case 8:
+				enterOuterAlt(_localctx, 8);
+				{
+				setState(164); match(NUM);
+				setState(165); match(SOMA);
+				setState(166); op();
+				}
+				break;
+
+			case 9:
+				enterOuterAlt(_localctx, 9);
+				{
+				setState(167); match(NUM);
+				setState(168); match(SUB);
+				setState(169); op();
+				}
+				break;
+
+			case 10:
+				enterOuterAlt(_localctx, 10);
+				{
+				setState(170); match(NUM);
+				setState(171); match(DIV);
+				setState(172); op();
+				}
+				break;
+
+			case 11:
+				enterOuterAlt(_localctx, 11);
+				{
+				setState(173); match(NUM);
+				setState(174); match(MULT);
+				setState(175); op();
+				}
+				break;
+
+			case 12:
+				enterOuterAlt(_localctx, 12);
+				{
+				setState(176); match(NUM);
+				setState(177); match(REST);
+				setState(178); op();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class AtrContext extends ParserRuleContext {
+		public OpContext op() {
+			return getRuleContext(OpContext.class,0);
+		}
+		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
+		public AtrContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_atr; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterAtr(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitAtr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitAtr(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final AtrContext atr() throws RecognitionException {
+		AtrContext _localctx = new AtrContext(_ctx, getState());
+		enterRule(_localctx, 16, RULE_atr);
+		try {
+			setState(188);
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(181); match(VAR);
+				setState(182); match(EQL);
+				setState(183); op();
+				}
+				break;
+
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(184); match(VAR);
+				setState(185); match(ACR);
+				}
+				break;
+
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(186); match(VAR);
+				setState(187); match(DEC);
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class OplContext extends ParserRuleContext {
+		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
+		public OplContext opl() {
+			return getRuleContext(OplContext.class,0);
+		}
+		public CmpContext cmp() {
+			return getRuleContext(CmpContext.class,0);
+		}
+		public OplContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_opl; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterOpl(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitOpl(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitOpl(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final OplContext opl() throws RecognitionException {
+		OplContext _localctx = new OplContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_opl);
+		try {
+			setState(200);
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(190); match(VAR);
+				setState(191); match(E);
+				setState(192); opl();
+				}
+				break;
+
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(193); match(VAR);
+				setState(194); match(OU);
+				setState(195); opl();
+				}
+				break;
+
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(196); cmp();
+				}
+				break;
+
+			case 4:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(197); cmp();
+				setState(198); opl();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class CmpContext extends ParserRuleContext {
+		public TerminalNode VAR() { return getToken(miniCsharpParser.VAR, 0); }
+		public TerminalNode NUM() { return getToken(miniCsharpParser.NUM, 0); }
+		public CmpContext cmp() {
+			return getRuleContext(CmpContext.class,0);
+		}
+		public CmpContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_cmp; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).enterCmp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof miniCsharpListener ) ((miniCsharpListener)listener).exitCmp(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof miniCsharpVisitor ) return ((miniCsharpVisitor<? extends T>)visitor).visitCmp(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final CmpContext cmp() throws RecognitionException {
+		CmpContext _localctx = new CmpContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_cmp);
+		try {
+			setState(242);
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(202); match(VAR);
+				setState(203); match(EQLEQL);
+				setState(204); cmp();
+				}
+				break;
+
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(205); match(VAR);
+				setState(206); match(DIF);
+				setState(207); cmp();
+				}
+				break;
+
+			case 3:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(208); match(VAR);
+				setState(209); match(MAI);
+				setState(210); cmp();
+				}
+				break;
+
+			case 4:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(211); match(VAR);
+				setState(212); match(MEN);
+				setState(213); cmp();
+				}
+				break;
+
+			case 5:
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(214); match(VAR);
+				setState(215); match(MENEQL);
+				setState(216); cmp();
+				}
+				break;
+
+			case 6:
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(217); match(VAR);
+				setState(218); match(MAIEQL);
+				setState(219); cmp();
+				}
+				break;
+
+			case 7:
+				enterOuterAlt(_localctx, 7);
+				{
+				setState(220); match(NUM);
+				setState(221); match(EQLEQL);
+				setState(222); cmp();
+				}
+				break;
+
+			case 8:
+				enterOuterAlt(_localctx, 8);
+				{
+				setState(223); match(NUM);
+				setState(224); match(DIF);
+				setState(225); cmp();
+				}
+				break;
+
+			case 9:
+				enterOuterAlt(_localctx, 9);
+				{
+				setState(226); match(NUM);
+				setState(227); match(MAI);
+				setState(228); cmp();
+				}
+				break;
+
+			case 10:
+				enterOuterAlt(_localctx, 10);
+				{
+				setState(229); match(NUM);
+				setState(230); match(MEN);
+				setState(231); cmp();
+				}
+				break;
+
+			case 11:
+				enterOuterAlt(_localctx, 11);
+				{
+				setState(232); match(NUM);
+				setState(233); match(MENEQL);
+				setState(234); cmp();
+				}
+				break;
+
+			case 12:
+				enterOuterAlt(_localctx, 12);
+				{
+				setState(235); match(NUM);
+				setState(236); match(MAIEQL);
+				setState(237); cmp();
+				}
+				break;
+
+			case 13:
+				enterOuterAlt(_localctx, 13);
+				{
+				setState(238); match(NEG);
+				setState(239); match(VAR);
+				}
+				break;
+
+			case 14:
+				enterOuterAlt(_localctx, 14);
+				{
+				setState(240); match(NUM);
+				}
+				break;
+
+			case 15:
+				enterOuterAlt(_localctx, 15);
+				{
+				setState(241); match(VAR);
 				}
 				break;
 			}
@@ -1288,11 +1155,11 @@ public class miniCsharpParser extends Parser {
 
 	public final TextoContext texto() throws RecognitionException {
 		TextoContext _localctx = new TextoContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_texto);
+		enterRule(_localctx, 22, RULE_texto);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(243); match(TEXTO);
+			setState(244); match(TEXTO);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1307,9 +1174,6 @@ public class miniCsharpParser extends Parser {
 	}
 
 	public static class NumContext extends ParserRuleContext {
-		public NumContext num() {
-			return getRuleContext(NumContext.class,0);
-		}
 		public TerminalNode NUM() { return getToken(miniCsharpParser.NUM, 0); }
 		public NumContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -1332,25 +1196,11 @@ public class miniCsharpParser extends Parser {
 
 	public final NumContext num() throws RecognitionException {
 		NumContext _localctx = new NumContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_num);
+		enterRule(_localctx, 24, RULE_num);
 		try {
-			setState(249);
-			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(245); match(NUM);
-				}
-				break;
-
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(246); match(NUM);
-				setState(247); match(SEP);
-				setState(248); num();
-				}
-				break;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(246); match(NUM);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1365,89 +1215,90 @@ public class miniCsharpParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3&\u00fe\4\2\t\2\4"+
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3)\u00fb\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
-		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
-		"\4\23\t\23\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\64"+
-		"\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4=\n\4\3\5\3\5\3\5\3\5\3\5\3\5\5\5"+
-		"E\n\5\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6U\n\6"+
-		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7e\n\7\3\b"+
-		"\3\b\3\b\3\t\3\t\3\t\3\n\3\n\3\n\3\13\3\13\3\13\3\f\3\f\3\f\3\r\3\r\3"+
-		"\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r"+
-		"\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3"+
-		"\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\5\r\u00a8\n\r\3\16"+
-		"\3\16\3\16\3\16\5\16\u00ae\n\16\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17"+
-		"\3\17\3\17\5\17\u00ba\n\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20"+
-		"\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20"+
-		"\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20"+
-		"\3\20\5\20\u00e2\n\20\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21"+
-		"\3\21\3\21\3\21\3\21\3\21\3\21\5\21\u00f4\n\21\3\22\3\22\3\23\3\23\3\23"+
-		"\3\23\5\23\u00fc\n\23\3\23\2\24\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36"+
-		" \"$\2\2\u0117\2&\3\2\2\2\4\63\3\2\2\2\6<\3\2\2\2\bD\3\2\2\2\nT\3\2\2"+
-		"\2\fd\3\2\2\2\16f\3\2\2\2\20i\3\2\2\2\22l\3\2\2\2\24o\3\2\2\2\26r\3\2"+
-		"\2\2\30\u00a7\3\2\2\2\32\u00ad\3\2\2\2\34\u00b9\3\2\2\2\36\u00e1\3\2\2"+
-		"\2 \u00f3\3\2\2\2\"\u00f5\3\2\2\2$\u00fb\3\2\2\2&\'\7\3\2\2\'(\7\26\2"+
-		"\2()\5\4\3\2)*\7\27\2\2*\3\3\2\2\2+,\5\6\4\2,-\7\32\2\2-\64\3\2\2\2./"+
-		"\5\6\4\2/\60\7\32\2\2\60\61\7&\2\2\61\62\5\4\3\2\62\64\3\2\2\2\63+\3\2"+
-		"\2\2\63.\3\2\2\2\64\5\3\2\2\2\65=\5\n\6\2\66=\5\f\7\2\67=\5\b\5\28=\5"+
-		"\30\r\29=\5\34\17\2:=\5 \21\2;=\5\32\16\2<\65\3\2\2\2<\66\3\2\2\2<\67"+
-		"\3\2\2\2<8\3\2\2\2<9\3\2\2\2<:\3\2\2\2<;\3\2\2\2=\7\3\2\2\2>E\3\2\2\2"+
-		"?E\5\16\b\2@E\5\20\t\2AE\5\22\n\2BE\5\24\13\2CE\5\26\f\2D>\3\2\2\2D?\3"+
-		"\2\2\2D@\3\2\2\2DA\3\2\2\2DB\3\2\2\2DC\3\2\2\2E\t\3\2\2\2FG\7\4\2\2GH"+
-		"\7\30\2\2HI\5$\23\2IJ\7\31\2\2JU\3\2\2\2KL\7\4\2\2LM\7\30\2\2MN\5\"\22"+
-		"\2NO\7\31\2\2OU\3\2\2\2PQ\7\4\2\2QR\7\30\2\2RS\7\f\2\2SU\7\31\2\2TF\3"+
-		"\2\2\2TK\3\2\2\2TP\3\2\2\2U\13\3\2\2\2VW\7\5\2\2WX\7\30\2\2XY\5$\23\2"+
-		"YZ\7\31\2\2Ze\3\2\2\2[\\\7\5\2\2\\]\7\30\2\2]^\5\"\22\2^_\7\31\2\2_e\3"+
-		"\2\2\2`a\7\5\2\2ab\7\30\2\2bc\7\f\2\2ce\7\31\2\2dV\3\2\2\2d[\3\2\2\2d"+
-		"`\3\2\2\2e\r\3\2\2\2fg\7\6\2\2gh\7\f\2\2h\17\3\2\2\2ij\7\7\2\2jk\7\f\2"+
-		"\2k\21\3\2\2\2lm\7\b\2\2mn\7\f\2\2n\23\3\2\2\2op\7\t\2\2pq\7\f\2\2q\25"+
-		"\3\2\2\2rs\7\n\2\2st\7\f\2\2t\27\3\2\2\2uv\7\f\2\2vw\7\33\2\2wx\7\f\2"+
-		"\2xy\7\r\2\2y\u00a8\7\f\2\2z{\7\f\2\2{|\7\33\2\2|}\7\f\2\2}~\7\16\2\2"+
-		"~\u00a8\7\f\2\2\177\u0080\7\f\2\2\u0080\u0081\7\33\2\2\u0081\u0082\7\f"+
-		"\2\2\u0082\u0083\7\17\2\2\u0083\u00a8\7\f\2\2\u0084\u0085\7\f\2\2\u0085"+
-		"\u0086\7\33\2\2\u0086\u0087\7\f\2\2\u0087\u0088\7\20\2\2\u0088\u00a8\7"+
-		"\f\2\2\u0089\u008a\7\f\2\2\u008a\u008b\7\33\2\2\u008b\u008c\7\f\2\2\u008c"+
-		"\u008d\7\21\2\2\u008d\u00a8\7\f\2\2\u008e\u008f\7\f\2\2\u008f\u0090\7"+
-		"\33\2\2\u0090\u0091\7\13\2\2\u0091\u0092\7\r\2\2\u0092\u00a8\7\13\2\2"+
-		"\u0093\u0094\7\f\2\2\u0094\u0095\7\33\2\2\u0095\u0096\7\13\2\2\u0096\u0097"+
-		"\7\16\2\2\u0097\u00a8\7\13\2\2\u0098\u0099\7\f\2\2\u0099\u009a\7\33\2"+
-		"\2\u009a\u009b\7\13\2\2\u009b\u009c\7\17\2\2\u009c\u00a8\7\13\2\2\u009d"+
-		"\u009e\7\f\2\2\u009e\u009f\7\33\2\2\u009f\u00a0\7\13\2\2\u00a0\u00a1\7"+
-		"\20\2\2\u00a1\u00a8\7\13\2\2\u00a2\u00a3\7\f\2\2\u00a3\u00a4\7\33\2\2"+
-		"\u00a4\u00a5\7\13\2\2\u00a5\u00a6\7\21\2\2\u00a6\u00a8\7\13\2\2\u00a7"+
-		"u\3\2\2\2\u00a7z\3\2\2\2\u00a7\177\3\2\2\2\u00a7\u0084\3\2\2\2\u00a7\u0089"+
-		"\3\2\2\2\u00a7\u008e\3\2\2\2\u00a7\u0093\3\2\2\2\u00a7\u0098\3\2\2\2\u00a7"+
-		"\u009d\3\2\2\2\u00a7\u00a2\3\2\2\2\u00a8\31\3\2\2\2\u00a9\u00aa\7\f\2"+
-		"\2\u00aa\u00ae\7\"\2\2\u00ab\u00ac\7\f\2\2\u00ac\u00ae\7#\2\2\u00ad\u00a9"+
-		"\3\2\2\2\u00ad\u00ab\3\2\2\2\u00ae\33\3\2\2\2\u00af\u00b0\7\f\2\2\u00b0"+
-		"\u00b1\7\22\2\2\u00b1\u00ba\5\34\17\2\u00b2\u00b3\7\f\2\2\u00b3\u00b4"+
-		"\7\23\2\2\u00b4\u00ba\5\34\17\2\u00b5\u00ba\5\36\20\2\u00b6\u00b7\5\36"+
-		"\20\2\u00b7\u00b8\5\34\17\2\u00b8\u00ba\3\2\2\2\u00b9\u00af\3\2\2\2\u00b9"+
-		"\u00b2\3\2\2\2\u00b9\u00b5\3\2\2\2\u00b9\u00b6\3\2\2\2\u00ba\35\3\2\2"+
-		"\2\u00bb\u00bc\7\f\2\2\u00bc\u00bd\7\34\2\2\u00bd\u00e2\5\36\20\2\u00be"+
-		"\u00bf\7\f\2\2\u00bf\u00c0\7\35\2\2\u00c0\u00e2\5\36\20\2\u00c1\u00c2"+
-		"\7\f\2\2\u00c2\u00c3\7\36\2\2\u00c3\u00e2\5\36\20\2\u00c4\u00c5\7\f\2"+
-		"\2\u00c5\u00c6\7\37\2\2\u00c6\u00e2\5\36\20\2\u00c7\u00c8\7\f\2\2\u00c8"+
-		"\u00c9\7 \2\2\u00c9\u00e2\5\36\20\2\u00ca\u00cb\7\f\2\2\u00cb\u00cc\7"+
-		"!\2\2\u00cc\u00e2\5\36\20\2\u00cd\u00ce\7\13\2\2\u00ce\u00cf\7\34\2\2"+
-		"\u00cf\u00e2\5\36\20\2\u00d0\u00d1\7\13\2\2\u00d1\u00d2\7\35\2\2\u00d2"+
-		"\u00e2\5\36\20\2\u00d3\u00d4\7\13\2\2\u00d4\u00d5\7\36\2\2\u00d5\u00e2"+
-		"\5\36\20\2\u00d6\u00d7\7\13\2\2\u00d7\u00d8\7\37\2\2\u00d8\u00e2\5\36"+
-		"\20\2\u00d9\u00da\7\13\2\2\u00da\u00db\7 \2\2\u00db\u00e2\5\36\20\2\u00dc"+
-		"\u00dd\7\13\2\2\u00dd\u00de\7!\2\2\u00de\u00e2\5\36\20\2\u00df\u00e2\7"+
-		"\13\2\2\u00e0\u00e2\7\f\2\2\u00e1\u00bb\3\2\2\2\u00e1\u00be\3\2\2\2\u00e1"+
-		"\u00c1\3\2\2\2\u00e1\u00c4\3\2\2\2\u00e1\u00c7\3\2\2\2\u00e1\u00ca\3\2"+
-		"\2\2\u00e1\u00cd\3\2\2\2\u00e1\u00d0\3\2\2\2\u00e1\u00d3\3\2\2\2\u00e1"+
-		"\u00d6\3\2\2\2\u00e1\u00d9\3\2\2\2\u00e1\u00dc\3\2\2\2\u00e1\u00df\3\2"+
-		"\2\2\u00e1\u00e0\3\2\2\2\u00e2\37\3\2\2\2\u00e3\u00e4\7\24\2\2\u00e4\u00e5"+
-		"\5\34\17\2\u00e5\u00e6\7\26\2\2\u00e6\u00e7\5\4\3\2\u00e7\u00e8\7\27\2"+
-		"\2\u00e8\u00f4\3\2\2\2\u00e9\u00ea\7\24\2\2\u00ea\u00eb\5\34\17\2\u00eb"+
-		"\u00ec\7\26\2\2\u00ec\u00ed\5\4\3\2\u00ed\u00ee\7\27\2\2\u00ee\u00ef\7"+
-		"\25\2\2\u00ef\u00f0\7\26\2\2\u00f0\u00f1\5\4\3\2\u00f1\u00f2\7\27\2\2"+
-		"\u00f2\u00f4\3\2\2\2\u00f3\u00e3\3\2\2\2\u00f3\u00e9\3\2\2\2\u00f4!\3"+
-		"\2\2\2\u00f5\u00f6\7$\2\2\u00f6#\3\2\2\2\u00f7\u00fc\7\13\2\2\u00f8\u00f9"+
-		"\7\13\2\2\u00f9\u00fa\7%\2\2\u00fa\u00fc\5$\23\2\u00fb\u00f7\3\2\2\2\u00fb"+
-		"\u00f8\3\2\2\2\u00fc%\3\2\2\2\r\63<DTd\u00a7\u00ad\u00b9\u00e1\u00f3\u00fb";
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\60\n\3\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\3\4\5\49\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
+		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5T\n\5\3\6\3\6\3\6\3"+
+		"\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6"+
+		"\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6r\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
+		"\3\7\3\7\3\7\3\7\3\7\3\7\5\7\u0082\n\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b"+
+		"\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\b\u0094\n\b\3\t\3\t\3\t\3\t\3\t\3\t"+
+		"\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3"+
+		"\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\t\u00b6\n\t\3\n\3\n\3\n\3\n\3\n\3"+
+		"\n\3\n\5\n\u00bf\n\n\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13"+
+		"\5\13\u00cb\n\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3"+
+		"\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f"+
+		"\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u00f5\n\f\3\r\3\r\3\16\3\16\3"+
+		"\16\2\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\2\u0123\2\34\3\2\2\2\4/\3"+
+		"\2\2\2\68\3\2\2\2\bS\3\2\2\2\nq\3\2\2\2\f\u0081\3\2\2\2\16\u0093\3\2\2"+
+		"\2\20\u00b5\3\2\2\2\22\u00be\3\2\2\2\24\u00ca\3\2\2\2\26\u00f4\3\2\2\2"+
+		"\30\u00f6\3\2\2\2\32\u00f8\3\2\2\2\34\35\7\3\2\2\35\36\7\30\2\2\36\37"+
+		"\5\4\3\2\37 \7\31\2\2 \3\3\2\2\2!\"\5\6\4\2\"#\7\34\2\2#\60\3\2\2\2$%"+
+		"\5\6\4\2%&\7\34\2\2&\'\5\6\4\2\'(\7\34\2\2()\5\4\3\2)\60\3\2\2\2*+\5\6"+
+		"\4\2+,\7\34\2\2,-\5\6\4\2-.\7\34\2\2.\60\3\2\2\2/!\3\2\2\2/$\3\2\2\2/"+
+		"*\3\2\2\2\60\5\3\2\2\2\619\5\n\6\2\629\5\f\7\2\639\5\b\5\2\649\5\16\b"+
+		"\2\659\5\22\n\2\669\5\24\13\2\679\5\20\t\28\61\3\2\2\28\62\3\2\2\28\63"+
+		"\3\2\2\28\64\3\2\2\28\65\3\2\2\28\66\3\2\2\28\67\3\2\2\29\7\3\2\2\2:;"+
+		"\7\6\2\2;T\7\r\2\2<=\7\7\2\2=T\7\r\2\2>?\7\b\2\2?T\7\r\2\2@A\7\t\2\2A"+
+		"T\7\r\2\2BC\7\n\2\2CT\7\r\2\2DE\7\6\2\2EF\7\r\2\2FT\7\35\2\2GH\7\7\2\2"+
+		"HI\7\r\2\2IT\7\35\2\2JK\7\b\2\2KL\7\r\2\2LT\7\35\2\2MN\7\t\2\2NO\7\r\2"+
+		"\2OT\7\35\2\2PQ\7\n\2\2QR\7\r\2\2RT\7\35\2\2S:\3\2\2\2S<\3\2\2\2S>\3\2"+
+		"\2\2S@\3\2\2\2SB\3\2\2\2SD\3\2\2\2SG\3\2\2\2SJ\3\2\2\2SM\3\2\2\2SP\3\2"+
+		"\2\2T\t\3\2\2\2UV\7\4\2\2VW\7\32\2\2WX\5\32\16\2XY\7\33\2\2Yr\3\2\2\2"+
+		"Z[\7\4\2\2[\\\7\32\2\2\\]\5\30\r\2]^\7\33\2\2^r\3\2\2\2_`\7\4\2\2`a\7"+
+		"\32\2\2ab\7\r\2\2br\7\33\2\2cd\7\4\2\2de\7\32\2\2ef\5\30\r\2fg\7\'\2\2"+
+		"gh\7\r\2\2hi\7\33\2\2ir\3\2\2\2jk\7\4\2\2kl\7\32\2\2lm\5\30\r\2mn\7\'"+
+		"\2\2no\7\f\2\2op\7\33\2\2pr\3\2\2\2qU\3\2\2\2qZ\3\2\2\2q_\3\2\2\2qc\3"+
+		"\2\2\2qj\3\2\2\2r\13\3\2\2\2st\7\5\2\2tu\7\32\2\2uv\5\32\16\2vw\7\33\2"+
+		"\2w\u0082\3\2\2\2xy\7\5\2\2yz\7\32\2\2z{\5\30\r\2{|\7\33\2\2|\u0082\3"+
+		"\2\2\2}~\7\5\2\2~\177\7\32\2\2\177\u0080\7\r\2\2\u0080\u0082\7\33\2\2"+
+		"\u0081s\3\2\2\2\u0081x\3\2\2\2\u0081}\3\2\2\2\u0082\r\3\2\2\2\u0083\u0084"+
+		"\7\25\2\2\u0084\u0085\5\24\13\2\u0085\u0086\7\30\2\2\u0086\u0087\5\4\3"+
+		"\2\u0087\u0088\7\31\2\2\u0088\u0094\3\2\2\2\u0089\u008a\7\25\2\2\u008a"+
+		"\u008b\5\24\13\2\u008b\u008c\7\30\2\2\u008c\u008d\5\4\3\2\u008d\u008e"+
+		"\7\31\2\2\u008e\u008f\7\26\2\2\u008f\u0090\7\30\2\2\u0090\u0091\5\4\3"+
+		"\2\u0091\u0092\7\31\2\2\u0092\u0094\3\2\2\2\u0093\u0083\3\2\2\2\u0093"+
+		"\u0089\3\2\2\2\u0094\17\3\2\2\2\u0095\u00b6\7\r\2\2\u0096\u00b6\7\f\2"+
+		"\2\u0097\u0098\7\r\2\2\u0098\u0099\7\16\2\2\u0099\u00b6\5\20\t\2\u009a"+
+		"\u009b\7\r\2\2\u009b\u009c\7\17\2\2\u009c\u00b6\5\20\t\2\u009d\u009e\7"+
+		"\r\2\2\u009e\u009f\7\20\2\2\u009f\u00b6\5\20\t\2\u00a0\u00a1\7\r\2\2\u00a1"+
+		"\u00a2\7\21\2\2\u00a2\u00b6\5\20\t\2\u00a3\u00a4\7\r\2\2\u00a4\u00a5\7"+
+		"\22\2\2\u00a5\u00b6\5\20\t\2\u00a6\u00a7\7\f\2\2\u00a7\u00a8\7\16\2\2"+
+		"\u00a8\u00b6\5\20\t\2\u00a9\u00aa\7\f\2\2\u00aa\u00ab\7\17\2\2\u00ab\u00b6"+
+		"\5\20\t\2\u00ac\u00ad\7\f\2\2\u00ad\u00ae\7\20\2\2\u00ae\u00b6\5\20\t"+
+		"\2\u00af\u00b0\7\f\2\2\u00b0\u00b1\7\21\2\2\u00b1\u00b6\5\20\t\2\u00b2"+
+		"\u00b3\7\f\2\2\u00b3\u00b4\7\22\2\2\u00b4\u00b6\5\20\t\2\u00b5\u0095\3"+
+		"\2\2\2\u00b5\u0096\3\2\2\2\u00b5\u0097\3\2\2\2\u00b5\u009a\3\2\2\2\u00b5"+
+		"\u009d\3\2\2\2\u00b5\u00a0\3\2\2\2\u00b5\u00a3\3\2\2\2\u00b5\u00a6\3\2"+
+		"\2\2\u00b5\u00a9\3\2\2\2\u00b5\u00ac\3\2\2\2\u00b5\u00af\3\2\2\2\u00b5"+
+		"\u00b2\3\2\2\2\u00b6\21\3\2\2\2\u00b7\u00b8\7\r\2\2\u00b8\u00b9\7\35\2"+
+		"\2\u00b9\u00bf\5\20\t\2\u00ba\u00bb\7\r\2\2\u00bb\u00bf\7%\2\2\u00bc\u00bd"+
+		"\7\r\2\2\u00bd\u00bf\7&\2\2\u00be\u00b7\3\2\2\2\u00be\u00ba\3\2\2\2\u00be"+
+		"\u00bc\3\2\2\2\u00bf\23\3\2\2\2\u00c0\u00c1\7\r\2\2\u00c1\u00c2\7\23\2"+
+		"\2\u00c2\u00cb\5\24\13\2\u00c3\u00c4\7\r\2\2\u00c4\u00c5\7\24\2\2\u00c5"+
+		"\u00cb\5\24\13\2\u00c6\u00cb\5\26\f\2\u00c7\u00c8\5\26\f\2\u00c8\u00c9"+
+		"\5\24\13\2\u00c9\u00cb\3\2\2\2\u00ca\u00c0\3\2\2\2\u00ca\u00c3\3\2\2\2"+
+		"\u00ca\u00c6\3\2\2\2\u00ca\u00c7\3\2\2\2\u00cb\25\3\2\2\2\u00cc\u00cd"+
+		"\7\r\2\2\u00cd\u00ce\7\36\2\2\u00ce\u00f5\5\26\f\2\u00cf\u00d0\7\r\2\2"+
+		"\u00d0\u00d1\7\37\2\2\u00d1\u00f5\5\26\f\2\u00d2\u00d3\7\r\2\2\u00d3\u00d4"+
+		"\7 \2\2\u00d4\u00f5\5\26\f\2\u00d5\u00d6\7\r\2\2\u00d6\u00d7\7!\2\2\u00d7"+
+		"\u00f5\5\26\f\2\u00d8\u00d9\7\r\2\2\u00d9\u00da\7\"\2\2\u00da\u00f5\5"+
+		"\26\f\2\u00db\u00dc\7\r\2\2\u00dc\u00dd\7#\2\2\u00dd\u00f5\5\26\f\2\u00de"+
+		"\u00df\7\f\2\2\u00df\u00e0\7\36\2\2\u00e0\u00f5\5\26\f\2\u00e1\u00e2\7"+
+		"\f\2\2\u00e2\u00e3\7\37\2\2\u00e3\u00f5\5\26\f\2\u00e4\u00e5\7\f\2\2\u00e5"+
+		"\u00e6\7 \2\2\u00e6\u00f5\5\26\f\2\u00e7\u00e8\7\f\2\2\u00e8\u00e9\7!"+
+		"\2\2\u00e9\u00f5\5\26\f\2\u00ea\u00eb\7\f\2\2\u00eb\u00ec\7\"\2\2\u00ec"+
+		"\u00f5\5\26\f\2\u00ed\u00ee\7\f\2\2\u00ee\u00ef\7#\2\2\u00ef\u00f5\5\26"+
+		"\f\2\u00f0\u00f1\7$\2\2\u00f1\u00f5\7\r\2\2\u00f2\u00f5\7\f\2\2\u00f3"+
+		"\u00f5\7\r\2\2\u00f4\u00cc\3\2\2\2\u00f4\u00cf\3\2\2\2\u00f4\u00d2\3\2"+
+		"\2\2\u00f4\u00d5\3\2\2\2\u00f4\u00d8\3\2\2\2\u00f4\u00db\3\2\2\2\u00f4"+
+		"\u00de\3\2\2\2\u00f4\u00e1\3\2\2\2\u00f4\u00e4\3\2\2\2\u00f4\u00e7\3\2"+
+		"\2\2\u00f4\u00ea\3\2\2\2\u00f4\u00ed\3\2\2\2\u00f4\u00f0\3\2\2\2\u00f4"+
+		"\u00f2\3\2\2\2\u00f4\u00f3\3\2\2\2\u00f5\27\3\2\2\2\u00f6\u00f7\7(\2\2"+
+		"\u00f7\31\3\2\2\2\u00f8\u00f9\7\f\2\2\u00f9\33\3\2\2\2\f/8Sq\u0081\u0093"+
+		"\u00b5\u00be\u00ca\u00f4";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

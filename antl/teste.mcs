@@ -1,7 +1,7 @@
 Main{
 int x_ajsja;
 double x;
-if(x >= 10){
+bool y;
 x = 15;
-};
+double k;
 }

@@ -68,6 +68,7 @@ cmp    :VAR '==' cmp
        |NUM '<' cmp
        |NUM '<=' cmp
        |NUM '>=' cmp
+       |'!' VAR
        |NUM
        |VAR;
 
@@ -77,8 +78,7 @@ cf     :IF(opl)'{'codigo'}'
 
 texto  :TEXTO;
 
-num    :NUM
-       |NUM ',' num;
+num    :NUM;
 
 //TOKENS
 
@@ -90,8 +90,8 @@ FLOAT : 'float';
 DOUBLE: 'double';
 STRING: 'string';
 BOOL  : 'bool';
-NUM   : [0-9]+;
-VAR   : [_a-zA-Z]+;
+NUM   : [0-9]+([.]?[0-9]+|[0-9]*);
+VAR   : ([_]|[a-zA-Z])([a-zA-Z0-9]|[_])*;
 SOMA  : '+';
 SUB   : '-';
 DIV   : '/';
@@ -113,8 +113,9 @@ MAI   : '>';
 MEN   : '<';
 MENEQL: '<=';
 MAIEQL: '>=';
+NEG   : '!';
 ACR   : '++';
 DEC   : '--';
-TEXTO : [/w/W]+;
 SEP   : ',';
+TEXTO : [/w/W]+;
 EOL   : [\t\s\n]+;

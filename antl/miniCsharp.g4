@@ -53,6 +53,7 @@ op       : VAR '=' operacao
          | VAR '=' B
          | VAR '=' TEXTO
          | VAR '=' CARACTER
+         | atr
          ;
 
 operacao : operacaoAux
@@ -72,11 +73,12 @@ operadores: '+'
           | '%'
           ;
         
-          
-       
+                 
 atr   : VAR'++'
-      | VAR'--';
-
+      | VAR'--'
+      | VAR '+=' NUMI
+      | VAR '-=' NUMI
+      ;
 cond: comp
     | comp opComp
     ;
@@ -141,7 +143,9 @@ MAIEQL: '>=';
 NEG   : '!';
 ACR   : '++';
 DEC   : '--';
+ACRMORE: '+=';
+DECMORE: '-=';
 SEP   : ',';
-CARACTER: ['][.]['] ;
-TEXTO : '"'[\w\W\n\t]+'"';
+CARACTER: [']('""'|~'"')['] ;
+TEXTO : '"' ('""'|~'"')* '"';
 WS : (' '|'\t'|'\r'?'\n')+ -> skip;

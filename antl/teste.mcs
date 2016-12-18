@@ -1,5 +1,7 @@
 Main(){
  if(x == y){
-  string a = "ola";
- }
+  a = 'o';
+ }else{
+   double var = 2.4;
+}
 }

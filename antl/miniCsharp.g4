@@ -77,7 +77,11 @@ operadores: '+'
         
                  
 cond: comp
-    | comp opComp
+    | comp opComp cond
+    | '(' comp ')'
+    | '(' comp ')' opComp cond
+    | '!'comp
+    | VAR
     ;
 
 comp: VAR opComp VAR
@@ -92,6 +96,8 @@ opComp : '=='
        | '<'
        | '<='
        | '>='
+       | '&&'
+       | '||'
        |'!' 
        ;
 

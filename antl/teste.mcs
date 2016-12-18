@@ -1,7 +1,3 @@
 Main(){
- if(x == y){
-  a = 'o';
- }else{
-   double var = 2.4;
-}
+ 
 }

@@ -12,7 +12,6 @@ cmd     : ler
         | escrever
         | declaracao
         | atr
-        | op 
         ;
 
 declaracao : INT VAR
@@ -33,11 +32,11 @@ declaracao : INT VAR
            ;
 
            
-ler     : READ'('num')'
+ler     : READ'('num')' 
         | READ'('texto')'
         | READ'('VAR')'
         | READ'('texto','VAR')'
-        | READ'('texto','NUM')';
+        | READ'('texto','num')';
 
 escrever: WHITE'('num')'
         | WHITE'('texto')'
@@ -48,12 +47,15 @@ cf     :IF'('cond')''{'codigo'}'
        |IF'('cond')''{'codigo'}'ELSE'{'codigo'}';
 
 
-op       : VAR '=' operacao
+atr      : VAR '=' operacao
          | VAR '=' num 
          | VAR '=' B
          | VAR '=' TEXTO
          | VAR '=' CARACTER
-         | atr
+         | VAR'++'
+         | VAR'--'
+         | VAR '+=' NUMI
+         | VAR '-=' NUMI
          ;
 
 operacao : operacaoAux
@@ -74,11 +76,6 @@ operadores: '+'
           ;
         
                  
-atr   : VAR'++'
-      | VAR'--'
-      | VAR '+=' NUMI
-      | VAR '-=' NUMI
-      ;
 cond: comp
     | comp opComp
     ;
@@ -149,3 +146,5 @@ SEP   : ',';
 CARACTER: [']('""'|~'"')['] ;
 TEXTO : '"' ('""'|~'"')* '"';
 WS : (' '|'\t'|'\r'?'\n')+ -> skip;
+COMMENT: '//' .*? '\n' -> skip;
+COMMENTBLOCK: '/*' .*? '*/' -> skip;

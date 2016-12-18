@@ -10,26 +10,8 @@ codigo  : cmd';'
 
 cmd     : ler
         | escrever
-        | declaracao
         | atr
         ;
-
-declaracao : INT VAR
-           | FLOAT VAR
-           | DOUBLE VAR
-           | STRING VAR
-           | BOOL VAR
-           |CHAR VAR
-           | INT VAR '=' operacao
-           | FLOAT VAR '=' operacao
-           | DOUBLE VAR '=' operacao
-           | INT VAR '=' NUMI
-           | FLOAT VAR '=' NUMF
-           | DOUBLE VAR '=' NUMF
-           | STRING VAR '=' TEXTO
-           | BOOL VAR '=' B
-           | CHAR VAR '=' CARACTER
-           ;
 
            
 ler     : READ'('num')' 
@@ -38,9 +20,9 @@ ler     : READ'('num')'
         | READ'('texto','VAR')'
         | READ'('texto','num')';
 
-escrever: WHITE'('num')'
-        | WHITE'('texto')'
-        | WHITE'('VAR')';
+escrever: WRITE'('num')'
+        | WRITE'('texto')'
+        | WRITE'('VAR')';
 
 
 cf     :IF'('cond')''{'codigo'}'
@@ -110,20 +92,14 @@ num    : NUMF
 
 MAIN  : 'Main';
 READ  : 'read'; 
-WHITE : 'white';
-INT   : 'int';
-FLOAT : 'float';
-DOUBLE: 'double';
-STRING: 'string';
-BOOL  : 'bool';
+WRITE: 'write';
 IF    : 'if';
 ELSE  : 'else';
-//TRUE  : 'true';
 CHAR  : 'char';
 B     : ('true'|'false');
 NUMF  : [0-9]+([.]?[0-9]+|[0-9]*);
 NUMI  : [0-9]+;
-VAR   : ([_]|[a-zA-Z])([a-zA-Z0-9]|[_])*;
+VAR   : ('@')([_]|[a-zA-Z])([a-zA-Z0-9]|[_])*;
 SOMA  : '+';
 SUB   : '-';
 DIV   : '/';

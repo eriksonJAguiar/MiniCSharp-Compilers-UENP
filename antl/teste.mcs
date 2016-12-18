@@ -1,7 +1,5 @@
-Main{
-int x_ajsja;
-double x;
-bool y;
-x = 15;
-double k;
+Main(){
+ if(x == y){
+  string a = "ola";
+ }
 }

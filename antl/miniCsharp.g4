@@ -1,29 +1,36 @@
 grammar miniCsharp;
 
-mcSHARP : MAIN'{'codigo'}';
+mcSHARP : MAIN'('')''{'codigo'}';
          
 codigo  : cmd';'
-        | cmd';'cmd ';' codigo
-        | cmd';'cmd ';';
+        | cmd';'codigo
+        | cf 
+        | cf codigo
+        ;
 
 cmd     : ler
         | escrever
         | declaracao
-        | cf
         | atr
-        | opl
-        | op ;
+        | op 
+        ;
 
 declaracao : INT VAR
            | FLOAT VAR
            | DOUBLE VAR
            | STRING VAR
            | BOOL VAR
-           | INT VAR '='
-           | FLOAT VAR '='
-           | DOUBLE VAR '='
-           | STRING VAR '='
-           | BOOL VAR '=';
+           |CHAR VAR
+           | INT VAR '=' operacao
+           | FLOAT VAR '=' operacao
+           | DOUBLE VAR '=' operacao
+           | INT VAR '=' NUMI
+           | FLOAT VAR '=' NUMF
+           | DOUBLE VAR '=' NUMF
+           | STRING VAR '=' TEXTO
+           | BOOL VAR '=' B
+           | CHAR VAR '=' CARACTER
+           ;
 
            
 ler     : READ'('num')'
@@ -37,66 +44,80 @@ escrever: WHITE'('num')'
         | WHITE'('VAR')';
 
 
-cf     :IF(opl)'{'codigo'}'
-       |IF(opl)'{'codigo'}'ELSE'{'codigo'}';
+cf     :IF'('cond')''{'codigo'}'
+       |IF'('cond')''{'codigo'}'ELSE'{'codigo'}';
 
-op      :VAR
-        |NUM
-        |VAR '+' op
-        |VAR '-' op
-        |VAR '/' op
-        |VAR '*' op
-        |VAR '%' op
-        |NUM '+' op
-        |NUM '-' op
-        |NUM '/' op
-        |NUM '*' op
-        |NUM '%' op;
+
+op       : VAR '=' operacao
+         | VAR '=' num 
+         | VAR '=' B
+         | VAR '=' TEXTO
+         | VAR '=' CARACTER
+         ;
+
+operacao : operacaoAux
+         | operacaoAux operacao
+         ;
+
+operacaoAux : VAR operadores VAR
+            | num operadores VAR
+            | VAR operadores num
+            | num operadores num
+            ;
+
+operadores: '+'
+          | '*'
+          | '/'
+          | '-'
+          | '%'
+          ;
+        
           
        
-atr   : VAR '=' op
-      |VAR'++'
-      |VAR'--';
+atr   : VAR'++'
+      | VAR'--';
 
-opl    :VAR '&&' opl
-       |VAR '||' opl
-       |cmp
-       |cmp opl;
+cond: comp
+    | comp opComp
+    ;
 
-cmp    :VAR '==' cmp 
-       |VAR '!=' cmp
-       |VAR '>' cmp
-       |VAR '<' cmp
-       |VAR '<=' cmp
-       |VAR '>=' cmp
-       |NUM '==' cmp
-       |NUM '!=' cmp
-       |NUM '>' cmp
-       |NUM '<' cmp
-       |NUM '<=' cmp
-       |NUM '>=' cmp
-       |'!' VAR
-       |NUM
-       |VAR;
+comp: VAR opComp VAR
+    | VAR opComp num
+    | num opComp VAR
+    | num opComp num
+    ;
 
-
+opComp : '==' 
+       | '!='
+       | '>' 
+       | '<'
+       | '<='
+       | '>='
+       |'!' 
+       ;
 
 texto  :TEXTO;
 
-num    :NUM;
+num    : NUMF
+       | NUMI;
 
 //TOKENS
 
 MAIN  : 'Main';
-READ  : 'read';
+READ  : 'read'; 
 WHITE : 'white';
 INT   : 'int';
 FLOAT : 'float';
 DOUBLE: 'double';
 STRING: 'string';
 BOOL  : 'bool';
-B     : ['true''false'];
-NUM   : [0-9]+([.]?[0-9]+|[0-9]*);
+IF    : 'if';
+ELSE  : 'else';
+//TRUE  : 'true';
+CHAR  : 'char';
+B     : ('true'|'false');
+NUMF  : [0-9]+([.]?[0-9]+|[0-9]*);
+NUMI  : [0-9]+;
 VAR   : ([_]|[a-zA-Z])([a-zA-Z0-9]|[_])*;
 SOMA  : '+';
 SUB   : '-';
@@ -105,9 +126,6 @@ MULT  : '*';
 REST  : '%';
 E     : '&&';
 OU    : '||';
-IF    : 'if';
-ELSE  : 'else';
-TRUE  : 'true';
 CHA   : '{';
 CHF   : '}'; 
 PAA   : '(';
@@ -124,5 +142,6 @@ NEG   : '!';
 ACR   : '++';
 DEC   : '--';
 SEP   : ',';
-TEXTO : [/w/W]+;
-WS : (' '|'\t'|'/n')+ -> skip;
+CARACTER: ['][.]['] ;
+TEXTO : '"'[\w\W\n\t]+'"';
+WS : (' '|'\t'|'\r'?'\n')+ -> skip;

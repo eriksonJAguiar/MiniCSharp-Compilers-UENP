@@ -1,8 +1,5 @@
-// Generated from C:\Users\erikson\Desktop\MiniCSharp\antl\miniCsharp.g4 by ANTLR 4.1
+// Generated from C:\Users\erikson\Desktop\MiniCSharp\miniCSharp\compiler.miniCSharp.com\compiler\miniCSharp\com\miniCsharp.g4 by ANTLR 4.1
 package compiler.miniCSharp.com;
-
-import java.util.HashMap;
-
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -42,9 +39,6 @@ public class miniCsharpLexer extends Lexer {
 		"NEG", "ACR", "DEC", "ACRMORE", "DECMORE", "SEP", "CARACTER", "TEXTO", 
 		"WS", "COMMENT", "COMMENTBLOCK"
 	};
-
-
-	public HashMap<String,Integer> symbolTab = new HashMap<String,Integer>();
 
 
 	public miniCsharpLexer(CharStream input) {

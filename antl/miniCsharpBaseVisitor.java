@@ -1,4 +1,8 @@
-// Generated from D:\Documentos\github\MiniCSharp\antl\miniCsharp.g4 by ANTLR 4.1
+// Generated from C:\Users\erikson\Desktop\MiniCSharp\antl\miniCsharp.g4 by ANTLR 4.1
+package compiler.miniCSharp.com;
+
+import java.util.HashMap;
+
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
@@ -17,7 +21,7 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitOp(@NotNull miniCsharpParser.OpContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOperacaoAux(@NotNull miniCsharpParser.OperacaoAuxContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -25,31 +29,7 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitTexto(@NotNull miniCsharpParser.TextoContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitLer(@NotNull miniCsharpParser.LerContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitOpl(@NotNull miniCsharpParser.OplContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitCmp(@NotNull miniCsharpParser.CmpContext ctx) { return visitChildren(ctx); }
+	@Override public T visitComp(@NotNull miniCsharpParser.CompContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -65,7 +45,23 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitMcSHARP(@NotNull miniCsharpParser.McSHARPContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCf(@NotNull miniCsharpParser.CfContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 */
+	@Override public T visitOperadores(@NotNull miniCsharpParser.OperadoresContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 */
+	@Override public T visitOpComp(@NotNull miniCsharpParser.OpCompContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -81,23 +77,7 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitCmd(@NotNull miniCsharpParser.CmdContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitAtr(@NotNull miniCsharpParser.AtrContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.
-	 */
-	@Override public T visitDeclaracao(@NotNull miniCsharpParser.DeclaracaoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitCond(@NotNull miniCsharpParser.CondContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -113,5 +93,37 @@ public class miniCsharpBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.
 	 */
-	@Override public T visitCf(@NotNull miniCsharpParser.CfContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOperacao(@NotNull miniCsharpParser.OperacaoContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 */
+	@Override public T visitLer(@NotNull miniCsharpParser.LerContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 */
+	@Override public T visitCmd(@NotNull miniCsharpParser.CmdContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 */
+	@Override public T visitMcSHARP(@NotNull miniCsharpParser.McSHARPContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.
+	 */
+	@Override public T visitAtr(@NotNull miniCsharpParser.AtrContext ctx) { return visitChildren(ctx); }
 }

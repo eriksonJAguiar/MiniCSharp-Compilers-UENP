@@ -1,5 +1,14 @@
 grammar miniCsharp;
 
+@header {
+import java.util.HashMap;
+}
+
+@members{
+public HashMap<String,Integer> symbolTab = new HashMap<String,Integer>();
+}
+
+
 mcSHARP : MAIN'('')''{'codigo'}';
          
 codigo  : cmd';'
@@ -15,13 +24,13 @@ cmd     : ler
 
            
 ler     : READ'('num')' 
-        | READ'('texto')'
+        | READ'('TEXTO')'
         | READ'('VAR')'
-        | READ'('texto','VAR')'
-        | READ'('texto','num')';
+        | READ'('TEXTO','VAR')'
+        | READ'('TEXTO','num')';
 
 escrever: WRITE'('num')'
-        | WRITE'('texto')'
+        | WRITE'('TEXTO')'
         | WRITE'('VAR')';
 
 
@@ -44,13 +53,15 @@ operacao : operacaoAux
          | operacaoAux operacao
          ;
 
-operacaoAux : VAR operadores VAR
+operacaoAux 
+            : VAR operadores VAR
             | num operadores VAR
             | VAR operadores num
             | num operadores num
             ;
 
-operadores: '+'
+operadores 
+          : '+'
           | '*'
           | '/'
           | '-'
@@ -72,7 +83,8 @@ comp: VAR opComp VAR
     | num opComp num
     ;
 
-opComp : '==' 
+opComp 
+       : '=='
        | '!='
        | '>' 
        | '<'
@@ -82,11 +94,10 @@ opComp : '=='
        | '||'
        |'!' 
        ;
-
-texto  :TEXTO;
-
-num    : NUMF
-       | NUMI;
+num 
+       : NUMF
+       | NUMI 
+       ;
 
 //TOKENS
 

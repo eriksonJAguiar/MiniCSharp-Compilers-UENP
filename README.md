@@ -91,6 +91,6 @@ Console.Write
 
 ### Análise Lexica + Sintática
 
-[Gals]: http://gals.sourceforge.net/
+[ANTLR]: http://www.antlr.org/
 
-**Para fazer a analise léxica e sintática utilizaremos do gerador de analisador léxico e sintático [Gals], cujo o mesmo tem suporte a C++, java e Delphi, para a nossa abordagem utilizaremos a linguagem C++.**
+Para fazer a analise léxica e sintática utilizaremos do gerador de analisador léxico e sintático [ANTLR], cujo o mesmo tem suporte a várias linguagens como Java, C# e Python, para a nossa abordagem utilizaremos a linguagem Java.
